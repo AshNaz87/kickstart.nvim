@@ -110,7 +110,7 @@ do
 vim.o.number = true
 -- You can also add relative line numbers, to help with jumping.
 --  Experiment for yourself to see if you like it!
--- vim.o.relativenumber = true
+vim.o.relativenumber = true
 
   -- Enable mouse mode, can be useful for resizing splits for example!
   vim.o.mouse = 'a'
@@ -127,25 +127,25 @@ vim.o.number = true
   -- Enable break indent
   vim.o.breakindent = true
 
-  -- Enable undo/redo changes even after closing and reopening a file
-  vim.o.undofile = true
+-- Enable undo/redo changes even after closing and reopening a file
+vim.o.undofile = true
 
-  -- Case-insensitive searching UNLESS \C or one or more capital letters in the search term
-  vim.o.ignorecase = true
-  vim.o.smartcase = true
+-- Case-insensitive searching UNLESS \C or one or more capital letters in the search term
+vim.o.ignorecase = true
+vim.o.smartcase = true
 
-  -- Keep signcolumn on by default
-  vim.o.signcolumn = 'yes'
+-- Keep signcolumn on by default
+vim.o.signcolumn = 'yes'
 
-  -- Decrease update time
-  vim.o.updatetime = 250
+-- Decrease update time
+vim.o.updatetime = 250
 
-  -- Decrease mapped sequence wait time
-  vim.o.timeoutlen = 300
+-- Decrease mapped sequence wait time
+vim.o.timeoutlen = 300
 
-  -- Configure how new splits should be opened
-  vim.o.splitright = true
-  vim.o.splitbelow = true
+-- Configure how new splits should be opened
+vim.o.splitright = true
+vim.o.splitbelow = true
 
   -- Sets how neovim will display certain whitespace characters in the editor.
   --  See `:help 'list'`
@@ -158,14 +158,14 @@ vim.o.number = true
   vim.o.list = true
   vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 
-  -- Preview substitutions live, as you type!
-  vim.o.inccommand = 'split'
+-- Preview substitutions live, as you type!
+vim.o.inccommand = 'split'
 
-  -- Show which line your cursor is on
-  vim.o.cursorline = true
+-- Show which line your cursor is on
+vim.o.cursorline = true
 
-  -- Minimal number of screen lines to keep above and below the cursor.
-  vim.o.scrolloff = 10
+-- Minimal number of screen lines to keep above and below the cursor.
+vim.o.scrolloff = 10
 
   -- if performing an operation that would fail due to unsaved changes in the buffer (like `:q`),
   -- instead raise a dialog asking if you wish to save the current file(s)
@@ -749,17 +749,17 @@ do
     -- But for many setups, the LSP (`rust_analyzer`) will work just fine
     -- rust_analyzer = {},
 
-    stylua = {}, -- Used to format Lua code
+        stylua = {}, -- Used to format Lua code
 
-    -- Special Lua Config, as recommended by neovim help docs
-    lua_ls = {
-      on_init = function(client)
-        client.server_capabilities.documentFormattingProvider = false -- Disable formatting (formatting is done by stylua)
+        -- Special Lua Config, as recommended by neovim help docs
+        lua_ls = {
+          on_init = function(client)
+            client.server_capabilities.documentFormattingProvider = false -- Disable formatting (formatting is done by stylua)
 
-        if client.workspace_folders then
-          local path = client.workspace_folders[1].name
-          if path ~= vim.fn.stdpath 'config' and (vim.uv.fs_stat(path .. '/.luarc.json') or vim.uv.fs_stat(path .. '/.luarc.jsonc')) then return end
-        end
+            if client.workspace_folders then
+              local path = client.workspace_folders[1].name
+              if path ~= vim.fn.stdpath 'config' and (vim.uv.fs_stat(path .. '/.luarc.json') or vim.uv.fs_stat(path .. '/.luarc.jsonc')) then return end
+            end
 
         local current_settings = client.config.settings --[[@as lspconfig.settings.lua_ls]]
         client.config.settings.Lua = vim.tbl_deep_extend('force', current_settings.Lua, {
@@ -811,7 +811,7 @@ do
     -- You can add other tools here that you want Mason to install
   })
 
-  require('mason-tool-installer').setup { ensure_installed = ensure_installed }
+      require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
   for name, server in pairs(servers) do
     vim.lsp.config(name, server)
