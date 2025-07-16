@@ -5,10 +5,11 @@ return {
     local lint = require 'lint'
 
     lint.linters_by_ft = {
-      javascript = { 'eslint' },
-      javascriptreact = { 'eslint' },
-      typescript = { 'eslint' },
-      typescriptreact = { 'eslint' },
+      javascript = { 'oxlint' },
+      javascriptreact = { 'oxlint' },
+      typescript = { 'oxlint' },
+      typescriptreact = { 'oxlint' },
+      html = { 'htmlhint' },
       css = { 'stylelint' },
       scss = { 'stylelint' },
       sass = { 'stylelint' },
