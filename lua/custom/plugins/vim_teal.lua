@@ -1,3 +1,3 @@
 return {
-    'teal-language/vim-teal'
+  'teal-language/vim-teal',
 }
