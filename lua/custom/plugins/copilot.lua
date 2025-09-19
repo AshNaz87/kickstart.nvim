@@ -1,4 +1,8 @@
 return {
-  'github/copilot.vim',
-  version = '^1.4.0',
+  'zbirenbaum/copilot.lua',
+  cmd = 'Copilot',
+  event = 'InsertEnter',
+  config = function()
+    require('copilot').setup {}
+  end,
 }
