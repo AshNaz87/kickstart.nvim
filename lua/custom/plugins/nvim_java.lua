@@ -3,6 +3,8 @@ return {
   config = function()
     require('java').setup()
 
-    require('lspconfig').jdtls.setup {}
+    vim.lsp.config('jdtls', {})
+
+    vim.lsp.enable 'jdtls'
   end,
 }
