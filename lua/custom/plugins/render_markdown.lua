@@ -7,7 +7,7 @@ return {
   config = function()
     require('render-markdown').setup {
       completions = { lsp = { enabled = true } },
-      file_types = { 'markdown' },
+      file_types = { 'markdown', 'copilot-chat' },
       latex = { enabled = false },
     }
   end,

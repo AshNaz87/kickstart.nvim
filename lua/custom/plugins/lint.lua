@@ -44,6 +44,7 @@ return {
     lint.linters_by_ft['javascript'] = { 'oxlint' }
     lint.linters_by_ft['javascriptreact'] = { 'oxlint' }
     lint.linters_by_ft['json'] = { 'jsonlint' }
+    lint.linters_by_ft['jsonnet'] = { 'jsonnetfmt' }
     lint.linters_by_ft['markdown'] = { 'markdownlint' }
     lint.linters_by_ft['scss'] = { 'stylelint' }
     lint.linters_by_ft['terraform'] = { 'tflint' }
