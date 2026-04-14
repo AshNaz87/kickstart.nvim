@@ -90,6 +90,22 @@ return {
     end,
   },
 
+  -- Extend conform.nvim to format JS/TS/TSX/JSX files with prettierd.
+  {
+    'stevearc/conform.nvim',
+    opts = {
+      formatters_by_ft = {
+        javascript = { 'prettierd', 'prettier', stop_after_first = true },
+        typescript = { 'prettierd', 'prettier', stop_after_first = true },
+        javascriptreact = { 'prettierd', 'prettier', stop_after_first = true },
+        typescriptreact = { 'prettierd', 'prettier', stop_after_first = true },
+        css = { 'prettierd', 'prettier', stop_after_first = true },
+        html = { 'prettierd', 'prettier', stop_after_first = true },
+        json = { 'prettierd', 'prettier', stop_after_first = true },
+      },
+    },
+  },
+
   -- Extend the kickstart telescope spec: show hidden files in find_files.
   -- Works because the kickstart telescope config = function(_, opts) deep-merges opts.
   {

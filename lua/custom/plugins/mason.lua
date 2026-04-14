@@ -7,6 +7,7 @@ return {
       'gofumpt',
       'gomodifytags',
       'impl',
+      'prettierd',
     },
   },
 }
