@@ -94,6 +94,13 @@ return {
   {
     'stevearc/conform.nvim',
     opts = {
+      format_on_save = function(bufnr)
+        local disabled_filetypes = {}
+        if disabled_filetypes[vim.bo[bufnr].filetype] then
+          return nil
+        end
+        return { timeout_ms = 500 }
+      end,
       formatters_by_ft = {
         javascript = { 'prettierd', 'prettier', stop_after_first = true },
         typescript = { 'prettierd', 'prettier', stop_after_first = true },
@@ -114,6 +121,44 @@ return {
       pickers = {
         find_files = {
           hidden = true,
+        },
+      },
+    },
+  },
+  {
+    'nvim-treesitter/nvim-treesitter',
+    opts = { ensure_installed = { 'clojure', 'java' } },
+  },
+  -- Prevent mason-lspconfig from auto-enabling a basic jdtls instance that
+  -- conflicts with nvim-jdtls, which manages jdtls exclusively.
+  {
+    'mason-org/mason-lspconfig.nvim',
+    opts = {
+      automatic_enable = {
+        exclude = { 'jdtls' },
+      },
+    },
+  },
+  {
+    'neovim/nvim-lspconfig',
+    opts = {
+      servers = {
+        eslint = {
+          on_new_config = function(config, new_root_dir)
+            local function find_node_modules(dir)
+              local candidate = dir .. '/node_modules'
+              if vim.fn.isdirectory(candidate) == 1 then
+                return candidate
+              end
+              local parent = vim.fn.fnamemodify(dir, ':h')
+              if parent == dir then
+                return nil
+              end
+              return find_node_modules(parent)
+            end
+
+            config.settings.nodePath = find_node_modules(new_root_dir)
+          end,
         },
       },
     },

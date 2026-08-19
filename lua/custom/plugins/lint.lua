@@ -45,7 +45,6 @@ return {
     lint.linters_by_ft['javascriptreact'] = { 'oxlint' }
     lint.linters_by_ft['json'] = { 'jsonlint' }
     lint.linters_by_ft['jsonnet'] = { 'jsonnetfmt' }
-    lint.linters_by_ft['markdown'] = { 'markdownlint' }
 
     require('lint').linters.markdownlint.args = { '--config', vim.fn.expand '~/.markdownlint.json', '--stdin' }
 
@@ -53,7 +52,6 @@ return {
     lint.linters_by_ft['terraform'] = { 'tflint' }
     lint.linters_by_ft['typescript'] = { 'oxlint' }
     lint.linters_by_ft['typescriptreact'] = { 'oxlint' }
-    lint.linters_by_ft['text'] = { 'vale' }
 
     local lint_augroup = vim.api.nvim_create_augroup('Lint', { clear = true })
 
